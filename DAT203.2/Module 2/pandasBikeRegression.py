@@ -82,15 +82,7 @@ X_test['predicted'] = y_pred
 
 
 
-
-
-
-
-
-
-
-
-#visualizations
+#visualizations before machine learning
 num_cols = ["temp", "hum", "windspeed", "hr"] 
            
 def bike_scatter(df, cols):
@@ -326,4 +318,5 @@ print('relative absolute error', relative_absolute_error)
 X_test['cnt'] = y_test
 X_test = X_test.sort_values(by = ['days', 'workHr'], axis = 0, ascending = True)
 X_test['predicted'] = y_pred
+
 #box_resids(X_test)
