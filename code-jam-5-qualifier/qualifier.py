@@ -53,7 +53,7 @@ def generate_password(
                     password = password[:tmp] +  symbols[int(random()* len(symbols))] + password[tmp+1:]
             #In case allowed_chars were used along with has_symbols, but no symbols characters were included in allowed_chars
             except:
-                raise UserWarning('You have used allowed characters and has_uppercase as True, but did not include any uppercase characters!')
+                raise UserWarning('You have used allowed characters and has_symbols as True, but did not include any symbol characters!')
             
 
             
