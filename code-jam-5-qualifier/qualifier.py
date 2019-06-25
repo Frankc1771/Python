@@ -12,7 +12,15 @@ def passwordModifer(password, password_length, allowed, symbols, upper, has_symb
 
        
     #modifier based on the password_length to loop through to add new symbols or uppercase characters
-    if password_length > 100000:
+    if password_length > 20000000:
+        modifier = password_length // 5000000
+    elif password_length > 15000000:
+        modifier = password_length // 1000000
+    elif password_length > 10000000:
+        modifier = password_length // 100000
+    elif password_length > 1000000:
+        modifier = password_length // 10000
+    elif password_length > 100000:
         modifier = password_length // 5000
     elif password_length > 10000:
         modifier = password_length // 1000
@@ -85,7 +93,12 @@ def generate_password(
     #password variable
     password = ""
     
-    #helper function
+    #check password length support should be between 1<25,000,000
+    if password_length > 25000000 or password_length < 1:
+        raise UserWarning('Password length of 0 and lower and over 25 million characters are not supported')
+    #if has uppercase and symbols are being used, but length is only 1
+    if password_length == 1 and has_symbols and has_uppercase:
+        raise UserWarning('Password length set to 1, but symbol and uppercase was requested!')
 
     
     #check if ignored_chars or allowed_char is used and raise exception if they both are used.
@@ -136,8 +149,4 @@ def generate_password(
     password = passwordModifer(password, password_length, lower, symbols, upper, has_symbols, has_uppercase)
     return password
 
-
-
-
-print(generate_password(100, True, True, None, ['%', 'd', 'e']))
 
