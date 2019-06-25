@@ -7,7 +7,7 @@ from qualifier import generate_password
 
 # Test if it completes in less than 5 seconds when generating a password with 999999 characters.
 t = timeit.Timer(
-    functools.partial(generate_password, 999999, True, True)
+    functools.partial(generate_password, 1000000, True, True)
 )
 
 complete_time = t.timeit(1)

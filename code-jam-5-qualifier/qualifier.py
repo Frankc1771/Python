@@ -8,28 +8,16 @@ def passwordModifer(password, password_length, allowed, symbols, upper, has_symb
     Either lower if no allowed_chars were used or allowed if allowed_chars were used.
     This is used to make sure no added symbols are removed when adding uppercase as well.
     """
-
-
-       
+ 
     #modifier based on the password_length to loop through to add new symbols or uppercase characters
-    if password_length > 20000000:
-        modifier = password_length // 5000000
-    elif password_length > 15000000:
-        modifier = password_length // 1000000
-    elif password_length > 10000000:
-        modifier = password_length // 100000
-    elif password_length > 1000000:
-        modifier = password_length // 10000
-    elif password_length > 100000:
-        modifier = password_length // 5000
-    elif password_length > 10000:
-        modifier = password_length // 1000
-    elif password_length > 1000:
-        modifier = password_length // 10
-    elif password_length > 100:
-        modifier = password_length // 5
+    if password_length > 5000000:
+        modifier = password_length * .000005
+    elif password_length > 500000:
+        modifier = password_length * .00025
+    elif password_length > 50000:
+        modifier = password_length * .0025
     else:
-        modifier = password_length // 2
+        modifier = password_length * .2
 
     #if has_symbols is true replace a random amount of characters with symbols
     if has_symbols:
@@ -148,5 +136,4 @@ def generate_password(
     #if has_symbols or has_uppercase modify the password with the helper function
     password = passwordModifer(password, password_length, lower, symbols, upper, has_symbols, has_uppercase)
     return password
-
 
